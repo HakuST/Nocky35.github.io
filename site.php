@@ -2,8 +2,6 @@
 <?php 
 //NO LE MUEVAS AQUI CTM
 
-include 'global/conexion.php';
-include 'global/config.php';
 include 'templates/cabecera.php';
 include 'carrito.php';
 
@@ -11,10 +9,12 @@ include 'carrito.php';
 
   <div class="page-content">
       <?php
-        $consulta ="SELECT * FROM tblproductos";
-        $result = mysqli_query($con,$consulta);
-        $listProductos=$result->fetch_all();
-        // print_r($listProductos);
+        require "global/devuelvevariable.php";
+
+        $listProductos = new devuelvevariable();
+    
+        $arrayProductos = $listProductos->get_Productos();
+      
         ?>
         <?php foreach($listProductos as $producto){ ?>
           <div class="producto-container">
